@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farger</title>
+</head>
+<body>
+
+    <div id="color-boxes">
+        <div class="color-box" id="left-box">
+            <div class="color-name" id="left-color-name"></div>
+        </div>
+        <div class="color-box" id="right-box">
+            <div class="color-name" id="right-color-name"></div>
+        </div>
+    </div>
+    <input type="text" id="text-box" placeholder="Enter color name">
+    <button id="set-color-btn">Set Color</button>
+    <button id="random-color-btn">Random Color</button>
+    <button id="reset-color-btn">Reset</button>
+
+    <script>
+        const textBox = document.getElementById('text-box');
+        const leftBox = document.getElementById('left-box');
+        const rightBox = document.getElementById('right-box');
+        const leftColorName = document.getElementById('left-color-name');
+        const rightColorName = document.getElementById('right-color-name');
+
+        document.getElementById('set-color-btn').addEventListener('click', () => {
+          leftBox.style.backgroundColor = textBox.value;
+          leftColorName.textContent += textBox.value + ' ';
+        });
+
+        document.getElementById('random-color-btn').addEventListener('click', () => {
+          const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+          rightBox.style.backgroundColor = randomColor;
+          rightColorName.textContent += randomColor + ' ';
+        });
+
+        document.getElementById('reset-color-btn').addEventListener('click', () => {
+          leftBox.style.backgroundColor = 'white';
+          rightBox.style.backgroundColor = 'white';
+          leftColorName.textContent = '';
+          rightColorName.textContent = '';
+        });
+    </script>
+
+</body>
+</html>
